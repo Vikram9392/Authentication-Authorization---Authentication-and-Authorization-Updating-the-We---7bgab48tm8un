@@ -37,7 +37,7 @@ function isAuthorized(req,res,next){
   }
   jwt.verify(token,secretKey,(err,decoded)=>{
     if(err){
-      return res.status(401).json({message:'Invalid Token',error:err.message})
+      return res.status(401).json({message:'Invalid token',error:err.message})
     }
     req.user=decoded;
     next();
@@ -51,7 +51,7 @@ app.get('/profile',isAuthorized,(req, res) => {
   // Implement JWT token verification logic here
   // If the token is valid, students can access the user's data from 'decoded'
   // Example response:
-  res.status(201).json({ message: 'Profile data', user: req.user });
+  return res.status(201).json({ message: 'Profile data', user: req.user });
 });
 
 module.exports = app;
