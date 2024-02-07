@@ -39,9 +39,10 @@ function isAuthorized(req,res,next){
     if(err){
       return res.status(401).json({message:'Invalid Token',error:err.message})
     }
+    req.user=decoded;
+    next();
   })
-  req.user=decoded;
-  next();
+ 
 }
 // Protected route (students should implement this)
 app.get('/profile',isAuthorized,(req, res) => {
