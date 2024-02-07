@@ -19,7 +19,7 @@ const users = [
 app.post('/login', (req, res) => {
   // Implement user authentication logic here
   const{username,password}=req.body;
-  const user=user.find((user)=>user.username==username&&user.password==password)
+  const user=users.find((user)=>user.username==username&&user.password==password)
   if (!user) {
     return res.status(401).json({ message: 'Authentication failed' });
   }
